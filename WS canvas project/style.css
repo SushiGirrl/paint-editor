@@ -1,0 +1,154 @@
+/*comment*/
+*{
+    margin: 0;
+    padding: 0;
+    /*Specifies the behavior of the 'width' and 'height' properties.*/
+    /*border-box – The width and height properties include the content, padding, and border,
+    but do not include the margin. Note that padding and border will be inside of the box.*/
+    box-sizing: border-box;
+}
+body{
+    display: flex; /*comment*/
+    align-items: center; /*comment*/
+    justify-content: center;
+    /*vh. Represents a percentage of the height of the viewport's
+    initial containing block. 1vh is 1% of the viewport height.*/
+    min-height: 100vh;
+    background: darksalmon;
+}
+.flex-container{
+    display: flex;
+    /*if box-sizing is set to border-box,
+    it sets the width of the border area.*/
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    max-width: 1050px;
+}
+section{
+    background: white;
+}
+.tools-board{
+    width: 210px;
+    padding: 15px 22px 0;
+}
+.tools-board .row{
+    margin-bottom: 20px;
+}
+.row .options{
+    list-style: none;
+    margin: 10px 0 0 5px;
+}
+.row .options .option{
+    display: flex;
+    /*makes the cursor a pointer when hovering over options.*/
+    cursor: pointer;
+    /*Aligns flex items along the cross axis
+    of the current line of the flex container.*/
+    align-items: center;
+    margin-bottom: 10px;
+}
+.row :where(span,label){
+    color: darksalmon;
+    padding-left: 10px;
+}
+.option:is(:hover, .active) :where(span, label){
+    color: peachpuff;
+}
+.option #size-slider{
+    width: 100%;
+    height: 5px;
+    margin-top: 10px;
+}
+.colours .options{
+    display: flex;
+    justify-content: space-between;
+}
+.colours .option{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: relative;
+    margin-top: 3px;
+}
+.colours .option.selected::before{
+    position: absolute;
+    /*The content property replaces an element with
+    a generated value. Objects inserted using the
+    content property are anonymous replaced elements.*/
+    /*Computes to none for the ::before and ::after pseudo-elements.*/
+    /*none – When applied to a pseudo-element, the pseudo-element is not generated.
+    If applied to an element, the value has no effect.*/
+    content: "";
+    height: 12px;
+    width: 12px;
+    background: inherit;
+    border-radius: inherit;
+    border: 2px solid darksalmon;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.colours .option:nth-child(1){
+    background-color: #000000;
+    border: 1px solid darksalmon;
+}
+.colours .option:nth-child(2){
+    background-color: #ffffff;
+    border: 1px solid darksalmon;
+}
+.colours .option:nth-child(3){
+    background-color: #ff1493;
+    border: 1px solid darksalmon;
+}
+.colours .option:nth-child(4){
+    background-color: #00fa9a;
+    border: 1px solid darksalmon;
+}
+.buttons button{
+    width: 100%;
+    border: 1px solid darksalmon;
+    outline: none;
+    padding: 9px 0;
+    font-size: 0.9rem;
+    margin-bottom: 13px;
+    cursor: pointer;
+    background: none;
+    color: darksalmon;
+}
+.buttons button:hover{
+    background-color: darksalmon;
+    color: white;
+}
+.option #colour-picker-black{
+    opacity: 0;
+    cursor: pointer;
+}
+.option #colour-picker-white{
+    opacity: 0;
+    cursor: pointer;
+}
+.option #colour-picker-pink{
+    opacity: 0;
+    cursor: pointer;
+}
+.option #colour-picker-green{
+    opacity: 0;
+    cursor: pointer;
+}
+.drawing-board{
+    /* The item grows to absorb any extra free space
+    in the flex container, and shrinks to its minimum size
+    to fit the container.*/
+    flex: 1;
+    /*sets the desired behavior when content does not
+    fit in the parent element box (overflows) in the
+    horizontal and/or vertical direction.*/
+    /*hidden – Overflow content is clipped
+    at the parent element's padding box.*/
+    overflow: hidden;
+}
+.drawing-board canvas{
+    width: 100%;
+    height: 100%;
+}
